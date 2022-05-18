@@ -6,16 +6,26 @@ ocas.width = canvas.width = window.innerWidth;
 ocas.height = canvas.height = window.innerHeight;
 var bigbooms = [];
 
-/* window.onload = function () {
-  initAnimate();
-}; */
+// window.onload = function () {
+//   // initAnimate();
+// };
 
 document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
-  music.oncanplay = function () {
-    music.play();
-  };
+  var btna = document.querySelector(".btn-a");
+  btna.addEventListener("click", function () {
+    console.log("touch envent !");
+
+    setTimeout(() => {
+      music.play();
+    }, 0.5);
+  });
+  document.body.addEventListener("touchstart", function () {
+    setTimeout(() => {
+      music.play();
+    }, 0.5);
+  });
 };
 
 function initAnimate() {
