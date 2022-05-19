@@ -6,9 +6,21 @@ ocas.width = canvas.width = window.innerWidth;
 ocas.height = canvas.height = window.innerHeight;
 var bigbooms = [];
 
-// window.onload = function () {
-//   // initAnimate();
-// };
+window.onload = function () {
+  // initAnimate();
+  setInterval("toggleSound()", 100);
+};
+
+function toggleSound() {
+  var music = document.getElementById("music"); //获取ID
+
+  if (music.paused) {
+    //判读是否播放
+    music.setAttribute("muted", "false");
+    music.paused = false;
+    music.play(); //没有就播放
+  }
+}
 
 document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
