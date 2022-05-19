@@ -17,7 +17,7 @@ window.onload = function () {
     false
   );
   setInterval("toggleSound()", 1000);
-  setInterval("touchplay()", 1000);
+  // setInterval("touchplay()", 1000);
 };
 
 //toggle是控制显隐的按钮
@@ -68,14 +68,14 @@ function toggleSound() {
   }
 }
 
-document.getElementById("iframMusic").onload = function () {
-  var music = document.getElementById("music");
-  music.src = "万有引力.mp3";
-  music.setAttribute("muted", "false");
-  music.oncanplay = function () {
-    music.play();
-  };
-};
+// document.getElementById("iframMusic").onload = function () {
+//   var music = document.getElementById("music");
+//   music.src = "万有引力.mp3";
+//   music.setAttribute("muted", "false");
+//   music.oncanplay = function () {
+//     music.play();
+//   };
+// };
 
 function initAnimate() {
   drawBg();

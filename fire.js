@@ -17,16 +17,21 @@ window.onload = function () {
     false
   );
   setInterval("toggleSound()", 1000);
-  setInterval("touchplay()", 1000);
+  // setInterval("touchplay()", 1000);
 };
 
 //toggle是控制显隐的按钮
 //form是需要显隐的元素
-$("#audioplay").click(function () {
+$("#playmusic").click(function () {
   var music = document.getElementById("music");
-  music.load();
-  music.play();
-  $("#audioplay").animate(
+  if (music.paused) {
+    music.setAttribute("muted", "false");
+    music.paused = false;
+    music.oncanplay = function () {
+      music.play();
+    };
+  }
+  $("#playmusic").animate(
     {
       // "padding-top": "toggle",
       // "padding-bottom": "toggle",
@@ -42,18 +47,18 @@ $("#audioplay").click(function () {
   }, 600);
 });
 
-function touchplay() {
-  var music = document.getElementById("music");
-  music.setAttribute("muted", "false");
-  document.addEventListener("click", function () {
-    if (music.paused) {
-      music.paused = false;
-      music.oncanplay = function () {
-        music.play();
-      };
-    }
-  });
-}
+// function touchplay() {
+//   var music = document.getElementById("music");
+//   music.setAttribute("muted", "false");
+//   document.querySelector("#playmusic").addEventListener("click", function () {
+//     if (music.paused) {
+//       music.paused = false;
+//       music.oncanplay = function () {
+//         music.play();
+//       };
+//     }
+//   });
+// }
 
 function toggleSound() {
   var music = document.getElementById("music"); //获取ID
@@ -71,12 +76,14 @@ document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
   music.setAttribute("muted", "false");
-  if (music.paused) {
-    music.paused = false;
-    music.oncanplay = function () {
-      music.play();
-    };
-  }
+  document.querySelector("#playmusic").addEventListener("click", function () {
+    if (music.paused) {
+      music.paused = false;
+      music.oncanplay = function () {
+        music.play();
+      };
+    }
+  });
 };
 
 function initAnimate() {
