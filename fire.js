@@ -37,7 +37,6 @@ $("#playmusic").click(function () {
   if (music.paused) {
     music.setAttribute("muted", "false");
     music.paused = false;
-
     music.play();
   }
   setInterval(() => {
