@@ -43,7 +43,7 @@
 
   <!--对话部分-->
   <div class="share_img"><img src="img/xin.png" alt="" /></div>
-  <div class="page_one">
+  <div class="page_one" style="display: none;">
     <div class="content">
       <div class="text_wrapper">
         <img class="xin" src="img/xin.png" alt="" />
@@ -79,7 +79,13 @@
     style="position: absolute; right: 20px;top: 50px; text-align: center; font-size: 45px">
     <span style="position: absolute; z-index: 9999999;">🎵</span>
   </div> -->
-  <audio autoplay="autoplay" loop="loop" preload="auto" muted="true" id="music">
+  <div id="audioplay" style="position: absolute; left: 48%; top: 45%; width: 90px;height: 90px; text-align: center; background:no-repeat center/contain url(img/love.png) ; animation: animates 0.8s linear 0s infinite both;-webkit-animation: animates 0.8s linear 0s infinite both; transform: scale(4); transition: all 50s ease-out; z-index:
+    9999999;">
+    <span style="position: absolute; left: 29%; top:30% ; font-size: 20px; color: aliceblue; 
+    font-family: STHupo;">点我</span>
+  </div>
+
+  <audio autoplay=" autoplay" loop="loop" preload="auto" id="music">
     <source src="audio/万有引力.mp3" />
   </audio>
   <iframe id="iframMusic" allow="autoplay" style="display: none" src="./tmp.html"></iframe>

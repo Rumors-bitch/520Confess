@@ -20,6 +20,27 @@ window.onload = function () {
   setInterval("touchplay()", 1000);
 };
 
+//toggle是控制显隐的按钮
+//form是需要显隐的元素
+$("#audioplay").click(function () {
+  var audio = document.getElementById("music");
+  audio.play();
+  $("#audioplay").animate(
+    {
+      // "padding-top": "toggle",
+      // "padding-bottom": "toggle",
+      opacity: "toggle",
+      height: "toggle",
+    },
+    "slow"
+  );
+  setInterval(() => {
+    document
+      .getElementsByClassName("page_one")[0]
+      .setAttribute("style", "display:block;");
+  }, 600);
+});
+
 function touchplay() {
   var audio = document.getElementById("music");
   audio.setAttribute("muted", "false");
@@ -50,12 +71,9 @@ document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
   music.setAttribute("muted", "false");
-
-  setInterval(() => {
-    music.oncanplay = function () {
-      music.play();
-    };
-  }, 1000);
+  music.oncanplay = function () {
+    music.play();
+  };
 };
 
 function initAnimate() {
