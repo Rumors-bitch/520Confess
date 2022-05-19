@@ -13,6 +13,7 @@ window.onload = function () {
     "WeixinJSBridgeReady",
     function () {
       music.load();
+      music.play();
     },
     false
   );
@@ -37,7 +38,9 @@ $("#playmusic").click(function () {
   if (music.paused) {
     music.setAttribute("muted", "false");
     music.paused = false;
-    music.play();
+    music.oncanplay = function () {
+      music.play();
+    };
   }
   setInterval(() => {
     document
