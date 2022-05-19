@@ -8,11 +8,11 @@ var bigbooms = [];
 
 window.onload = function () {
   // initAnimate();
-  var music = document.getElementById("music");
+  var audio = document.getElementById("music");
   document.addEventListener(
     "WeixinJSBridgeReady",
     function () {
-      music.load();
+      audio.load();
     },
     false
   );
@@ -23,9 +23,9 @@ window.onload = function () {
 //toggle是控制显隐的按钮
 //form是需要显隐的元素
 $("#audioplay").click(function () {
-  var music = document.getElementById("music");
-  music.load();
-  music.play();
+  var audio = document.getElementById("music");
+  audio.load();
+  audio.play();
   $("#audioplay").animate(
     {
       // "padding-top": "toggle",
@@ -43,14 +43,14 @@ $("#audioplay").click(function () {
 });
 
 function touchplay() {
-  var music = document.getElementById("music");
-  music.setAttribute("muted", "false");
-  document.addEventListener("click", function () {
-    if (music.paused) {
+  var audio = document.getElementById("music");
+  audio.setAttribute("muted", "false");
+  document.addEventListener("touchstart", function () {
+    if (audio.paused) {
       music.paused = false;
       music.oncanplay = function () {
         music.play();
-      };
+      }; //没有就播放}
     }
   });
 }
@@ -59,11 +59,12 @@ function toggleSound() {
   var music = document.getElementById("music"); //获取ID
 
   if (music.paused) {
+    //判读是否播放
     music.setAttribute("muted", "false");
     music.paused = false;
     music.oncanplay = function () {
       music.play();
-    };
+    }; //没有就播放}
   }
 }
 
@@ -71,12 +72,9 @@ document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
   music.setAttribute("muted", "false");
-  if (music.paused) {
-    music.paused = false;
-    music.oncanplay = function () {
-      music.play();
-    };
-  }
+  music.oncanplay = function () {
+    music.play();
+  };
 };
 
 function initAnimate() {
