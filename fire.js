@@ -16,12 +16,7 @@ document.getElementById("iframMusic").onload = function () {
   var btna = document.querySelector(".btn-a");
   btna.addEventListener("click", function () {
     console.log("touch envent !");
-
-    setTimeout(() => {
-      music.play();
-    }, 0.5);
-  });
-  document.body.addEventListener("touchstart", function () {
+    music.setAttribute("muted", "false");
     setTimeout(() => {
       music.play();
     }, 0.5);
