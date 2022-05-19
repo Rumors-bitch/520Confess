@@ -24,13 +24,7 @@ window.onload = function () {
 //form是需要显隐的元素
 $("#playmusic").click(function () {
   var music = document.getElementById("music");
-  if (music.paused) {
-    music.setAttribute("muted", "false");
-    music.paused = false;
-    music.oncanplay = function () {
-      music.play();
-    };
-  }
+
   $("#playmusic").animate(
     {
       // "padding-top": "toggle",
@@ -40,6 +34,12 @@ $("#playmusic").click(function () {
     },
     "slow"
   );
+  if (music.paused) {
+    music.setAttribute("muted", "false");
+    music.paused = false;
+
+    music.play();
+  }
   setInterval(() => {
     document
       .getElementsByClassName("page_one")[0]
@@ -76,14 +76,13 @@ document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
   music.setAttribute("muted", "false");
-  document.querySelector("#playmusic").addEventListener("click", function () {
-    if (music.paused) {
-      music.paused = false;
-      music.oncanplay = function () {
-        music.play();
-      };
-    }
-  });
+
+  if (music.paused) {
+    music.paused = false;
+    music.oncanplay = function () {
+      music.play();
+    };
+  }
 };
 
 function initAnimate() {
