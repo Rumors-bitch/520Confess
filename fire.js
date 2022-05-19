@@ -8,6 +8,13 @@ var bigbooms = [];
 
 window.onload = function () {
   // initAnimate();
+  document.addEventListener(
+    "WeixinJSBridgeReady",
+    function () {
+      audio.load();
+    },
+    false
+  );
   setInterval("toggleSound()", 100);
 };
 
