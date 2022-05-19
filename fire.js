@@ -24,6 +24,7 @@ window.onload = function () {
 //form是需要显隐的元素
 $("#audioplay").click(function () {
   var audio = document.getElementById("music");
+  audio.load();
   audio.play();
   $("#audioplay").animate(
     {
