@@ -13,14 +13,11 @@ var bigbooms = [];
 document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
-  var btna = document.querySelector(".btn-a");
-  btna.addEventListener("click", function () {
-    console.log("touch envent !");
-    music.setAttribute("muted", "false");
-    setTimeout(() => {
-      music.play();
-    }, 0.5);
-  });
+
+  music.setAttribute("muted", "false");
+  setTimeout(() => {
+    music.play();
+  }, 0.5);
 };
 
 function initAnimate() {
