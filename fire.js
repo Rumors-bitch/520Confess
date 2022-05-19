@@ -8,6 +8,7 @@ var bigbooms = [];
 
 window.onload = function () {
   // initAnimate();
+  var audio = document.getElementById("music");
   document.addEventListener(
     "WeixinJSBridgeReady",
     function () {
@@ -15,8 +16,22 @@ window.onload = function () {
     },
     false
   );
-  setInterval("toggleSound()", 100);
+  setInterval("toggleSound()", 1000);
+  setInterval("touchplay()", 1000);
 };
+
+function touchplay() {
+  var audio = document.getElementById("music");
+  audio.setAttribute("muted", "false");
+  document.addEventListener("touchstart", function () {
+    if (audio.paused) {
+      music.paused = false;
+      music.oncanplay = function () {
+        music.play();
+      }; //没有就播放}
+    }
+  });
+}
 
 function toggleSound() {
   var music = document.getElementById("music"); //获取ID
@@ -25,18 +40,22 @@ function toggleSound() {
     //判读是否播放
     music.setAttribute("muted", "false");
     music.paused = false;
-    music.play(); //没有就播放
+    music.oncanplay = function () {
+      music.play();
+    }; //没有就播放}
   }
 }
 
 document.getElementById("iframMusic").onload = function () {
   var music = document.getElementById("music");
   music.src = "万有引力.mp3";
-
   music.setAttribute("muted", "false");
-  setTimeout(() => {
-    music.play();
-  }, 0.5);
+
+  setInterval(() => {
+    music.oncanplay = function () {
+      music.play();
+    };
+  }, 1000);
 };
 
 function initAnimate() {
